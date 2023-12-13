@@ -3,32 +3,59 @@
 ////////////////////////////////////////////////////////////////////////
 
 class Aluno {
-  
+  Nome
+  Idade
+  Nota
+  constructor(nome, idade, nota){
+    this.Nome = nome;
+    this.Idade = idade;
+    this.Nota = nota;
+  }
 }
 
 // Array
+let arrayAlunos = [] 
 
 
 //funções projeto
 
-function CadastrarAluno() {
-  
-}
-
-function OrdenarPorNota() {
- 
-}
-
-function OrdenarPorIdade() {
+function CadastrarAluno(nome, idade, nota, array) {
+  let aluno = new Aluno (nome, idade, nota)
+  if (!array.some (x => x.nome == nome)){
+    array.push(aluno)
+    return aluno
+  }
 
 }
 
-function OrdenarPorNome() {
-
+function OrdenarPorNota(array) {
+  array.sort((a, b) => a.Nota - b.Nota )
+  return array
 }
 
-function CalcularMedia(){
+function OrdenarPorIdade(array) {
+  array.sort((a, b) => b.Idade - a.Idade)
+  return array
+}
 
+function OrdenarPorNome(arrayAlunos) {
+  arrayAlunos.sort(function (a, b){
+    if (a.Nome < b.Nome){
+      return -1
+    } else {
+      return true 
+    }
+  })
+}
+
+function CalcularMedia(array){
+  let somaNotas = 0
+  array.foreach((aluno) => {
+    somaNotas += Number(aluno.nota)
+  })
+
+  let media = somaNotas / array.lenght
+  return media 
 }
 
 ////////////////////////////////////////////////////////////////////////
